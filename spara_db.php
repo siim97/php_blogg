@@ -18,9 +18,9 @@
 
         $conn = new mysqli($host, $user, $pass, $database);
         if ($conn->connect_error)
-            die("error:" $conn->connect_eror);
+            die("error:" . $conn->connect_eror);
 
-        $sql = "INSERT INTO bloggen (rubrik, tidsstampel) VALUES ('$rubrik', '$inlagg' )";
+        $sql = "INSERT INTO bloggen (rubrik, inlagg) VALUES ('$rubrik', '$inlagg' )";
 
         $result = $conn->query($sql);
 
@@ -29,7 +29,7 @@
         else
             echo "Inlägget sparades.";
 
-        $conn->close;
+        $conn->close();
         ?>
     </body>
 </html>

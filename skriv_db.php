@@ -10,7 +10,7 @@
         <h2>Skriv inlägg</h2>
         <form action="spara_db.php" method="post">
             <label>Rubrik</label><input type="text" maxlength="100" name="rubrik">
-            <label name="inlagg">Text</label><textarea></textarea >
+            <label>Text</label><textarea name="inlagg"></textarea >
             <input type="submit" value="Posta">
         </form>
     </body>
