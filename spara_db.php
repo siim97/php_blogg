@@ -8,6 +8,9 @@
     </head>
     <body>
         <?php
+        $rubrik = $_POST['rubrik'];
+        $inlagg = $_POST['inlagg'];
+
         $host = 'localhost';
         $user = 'solberg_user';
         $pass = 'solberg_pass';
