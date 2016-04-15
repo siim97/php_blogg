@@ -25,6 +25,8 @@
             die("Kunde inte spara inlägg: " . $conn->error);
         else
             echo "Inlägget sparades.";
+
+        $conn->close;
         ?>
     </body>
 </html>
