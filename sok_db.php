@@ -13,16 +13,14 @@
         <script src="style.css"></script>
     </head>
     <body>
-    <ul class="nav nav-tabs">
-  <li role="presentation"><a href="index.php">Hem</a></li><li role="presentation"class="active"><a href="skriv_db.php">Skriv inlägg</a></li>
+      <ul class="nav nav-tabs">
+       <li role="presentation"><a href="index.php">Hem</a></li><li role="presentation"><a href="skriv_db.php">Skriv inlägg</a></li>
   <li role="presentation"><a href="lista_db.php">Lista inlägg</a></li>
-  <li role="presentation"><a href="sok_db.php">Sök</a></li>
-</ul>
-        <h2>Skriv inlägg</h2>
-        <form action="spara_db.php" method="post">
-            <label>Rubrik</label><br><input type="text" maxlength="100" name="rubrik"><br>
-            <label>Text</label><br><textarea name="inlagg"></textarea ><br>
-            <input type="submit" value="Posta">
+  <li role="presentation"class="active"><a href="sok_db.php">Sök</a></li>
+        <h2>Sök inlägg</h2>
+        <form action="soklista_db.php" method="post">
+            <label>Sökterm</label><br><input type="text" maxlength="100" name="sokterm"><br>
+            <input type="submit" value="Sök">
         </form>
     </body>
 </html>

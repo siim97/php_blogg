@@ -1,0 +1,27 @@
+body {
+    font-family: sans-serif;
+}
+
+table {
+    width: 800px;
+}
+
+caption {
+    background-color: aqua;
+    border-radius: 5px 5px 0 0;
+    color: white;
+    font-size: 38px;
+    padding: 10px;
+}
+
+td {
+    10px;
+}
+
+tr:nth-child(even){
+    background: #CCC;
+}
+
+tr:nth-child(odd){
+    background: #FFF;
+}

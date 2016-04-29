@@ -13,29 +13,45 @@
     </head>
     <body>
        <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="index.php">Hem</a></li><li role="presentation"><a href="skriv_db.php">Skriv inlägg</a></li>
+  <li role="presentation"><a href="index.php">Hem</a></li><li role="presentation"><a href="skriv_db.php">Skriv inlägg</a></li>
   <li role="presentation"><a href="lista_db.php">Lista inlägg</a></li>
+  <li role="presentation" class="active"><a href="#">Redigera inlägg</a></li>
   <li role="presentation"><a href="sok_db.php">Sök</a></li>
 </ul>
         <?php
+        $id = $_GET['id'];
 
-        $rubrik = $_POST['rubrik'];
-        $inlagg = $_POST['inlagg'];
-
-        require_once('config_db.php');
+        $host = 'localhost';
+        $user = 'solberg_user';
+        $pass = 'solberg_pass';
+        $database = 'solberg_db';
 
         $conn = new mysqli($host, $user, $pass, $database);
         if ($conn->connect_error)
             die("error:" . $conn->connect_eror);
 
-        $sql = "INSERT INTO bloggen (rubrik, inlagg) VALUES ('$rubrik', '$inlagg' )";
+        $sql = "SELECT * FROM bloggen WHERE id='$id'";
 
         $result = $conn->query($sql);
 
-        if(!$result)
-            die("Kunde inte spara inlägg: " . $conn->error);
-        else
-            echo "Inlägget sparades.";
+        if (!$result)
+        die("Kunde inte hämta inlägg: " . $conn->error);
+
+    echo "<h1>Min kära blogg</h1>";
+    echo"<form action=\"uppdatera_db.php\" method=\"post\">";
+
+    // Berätta hur många poster vi hittat som motsvara sökvillkoret
+
+    // Skriv ut alla inlägg en efter en
+    while ($row = $result->fetch_assoc()) {
+        echo "<article>";
+        echo "<input type=\"hidden\" name=\"id\" value=\"" . $row['id'] . "\">";
+    echo "<label>Rubrik</label><br><input type=\"text\" maxlength=\"100\" name=\"rubrik\" value=\"" . $row['rubrik'] . "\"><br>";
+        echo "<label>Text</label><br><textarea name=\"inlagg\">" . $row['inlagg'] . "</textarea><br>";
+        echo "</article>";
+    }
+    echo "<input type=\"submit\" value=\"Spara\">";
+    echo "</form>";
 
         $conn->close();
         ?>
